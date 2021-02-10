@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><html><head/><body>
+<h1>Input Process Output (IPO) Model</h1>
+<p>You have seen the Input-Process-Output model in action. Conceptually, it looks like this:</p>
+<p><img src="images/input-output.png" alt="images/input-output.png"/></p>
+<ol>
+  <li>Input is provided when the program starts to run</li>
+  <li>The input is processed</li>
+  <li>Output is produced</li>
+</ol>
+<p>The PyCharm IDE starts execution of the program when you click the Run command (green) triangle, and the Python <em>runtime</em>, which kicks off the program, finds the beginning of the main routine, or function: <code>if __name__ == "__main__"</code>:</p>
+<p>When the program starts to run, it follows the instructions you coded into your program. If you can, you should request and provide all input at the beginning of program execution, and provide all output at the end. Intermediate results can be stored as variables in memory along with the inputs.</p>
+<p>Let’s consider another program that converts temperatures between Fahrenheit and Celsius.</p>
+<p>First ask yourself what inputs does my program need. If you answered a number that represents a temperature in Fahrenheit, you are right.</p>
+<p>What is the output? The temperature in Celsius.</p>
+<p>So, what is the process? </p>
+<ol>
+  <li>Request a value [the input]</li>
+  <li>Convert the value using the formula C = (5/9) * (F - 32) [the process]</li>
+  <li>Display the new value [the output]</li>
+</ol>
+<p>What variables are needed? </p>
+<ul>
+  <li>in_temp (the temperature in Fahrenheit)</li>
+  <li>out_temp (the temperature in Celsius)</li>
+</ul>
+<p><strong>How do you decide what to name a variable?</strong> As a best practice, variable names should, most importantly, reflect on the usage of the variable; they should be lowercase, with words separated by underscores as necessary to improve readability. Thus, 'in' and 'out' are short forms for input and output, and 'temp' is a shortened form meaning temperature. You could have chosen input_temperature and output_temperature, but these names seem a bit long, and since there are no temporary things in the program to confuse the word 'temp' with, using 'temp' to mean temperature seems okay, too. If you want a much more complete but longer answer, see the Naming Conventions section of the <a href="https://www.python.org/dev/peps/pep-0008/#naming-conventions">Python Style Guide</a></p>
+<p>We will see later that there are other ways to write even such a simple program as this one, but for now, we can use an extra variable it is a bit more clear what the program is doing.</p>
+<h2>A Few Notes About Variables and Data Types</h2>
+<p>Consider the statement: <code>print(str(in_temp)+"F"+" = "+str(out_temp)+"C")</code>. If you look up the print function in documentation, you will see that it only prints a single string. A <em>String</em> is a <em>data type</em>. Thus, all the numbers must be converted to strings and they must be concatenated (strung together) to form one string. The + operator is the <em>concatenate operator</em> for strings. For numbers, the + operator is the <em>addition operator</em>, which adds 2 numbers together, as in <code>z = 2 + 3</code> resulting in z containing the value 5. </p>
+<p>You can specify a the value of a string by surrounding it with quotes, either double quotes or single quotes; they are interchangeable for reasons to be discussed later. (The print statement above could also be written as <code>print(str(in_temp)+'F'+' = '+str(out_temp)+'C')</code>.) Thus, you can tell the difference between a string that contains the characters "10" from the number 10, because the number is not surrounded by quotes. As you saw earlier, to convert an integer number to a string, you use the int() function. You use the str() function to convert a number to a string. </p>
+<h2>Assignment</h2>
+<ol>
+  <li>Create a new project, ConvertTemp, which you will use in subsequent assignments</li>
+  <li>Collect the temperature in Fahrenheit (If you didn’t do the extra credit from the last assignment, put a "label" in your input statement, e.g. <code>input("Enter F: ")</code></li>
+  <li>Convert it to Celsius</li>
+  <li>Display the result using the following statement:<br/><code>print(str(in_temp)+"F"+" = "+str(out_temp)+"C")</code></li>
+  <li>Test your program against some Fahrenheit temperatures that you know the conversion for, e.g. the freezing and boiling points for water, 32 and 212</li>
+  <li>Submit a screen shot of your running program code</li>
+  <li>Read <a href="https://www.w3schools.com/python/python_variables_names.asp">Python Variable Names</a> and answer the following question: When the coding style requires that variable names "should be lowercase, with words separated by underscores as necessary to improve readability," what is the name of this style?</li>
+</ol>
+</body></html>

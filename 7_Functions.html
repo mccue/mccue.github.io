@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><html><head/><body>
+<h1>Python Functions</h1>
+<p>In the past few lessons, you have been exposed to <em>built-in functions</em>, which are functions built into the Python language to hide complexity. The built-in functions you have seen so far are</p>
+<ul>
+  <li>print() - print a string</li>
+  <li>input() - accept a string as input from the keyboard</li>
+  <li>int() - <em><a href="https://www.w3schools.com/python/python_casting.asp">cast</a></em> or change a value from some type to an integer number</li>
+  <li>str() - cast a value into a string</li>
+</ul>
+<p>You probably noticed that these functions take an argument, which is the input to the function, and return a value, which is a result of performing the function. Consider the following example: </p>
+<pre><code>        in_str = input("Enter temperature in F: ")
+        in_temp = int(in_str)
+        out_temp = ...
+        print(str(in_temp)+'F'+' = '+str(out_temp)+'C')
+</code></pre>
+<p>The argument to the input function is the string that you want to prompt the user to a value on the keyboard. The return value is a string that contains what the user typed. If you aren’t sure what a built-in function does, you can hover over the use of the function in program: <img src="images/functionHelp.png" alt="images/functionHelp.png"/> It shows the definition of the function and describes it in detail:</p>
+<pre><code>def input(__prompt: Any = ...) -&gt; str
+</code></pre>
+<p>def indicates a definition, input is the function name. __prompt: is the name of the argument, which you will replace by a string, and the function returns a string. Note: Standard input and output are the keyboard and console, respectively.</p>
+<p>The argument to the int function is the value of in_str–in this case it is a string–that you want to convert to a return value, which is a number that you want to use in calculations. When you hover over the function name int, you get almost too much information, but you should read it carefully anyway. It says "<em>Convert a number or string to an integer, or return 0 if no arguments are given. If x is a number, return x.__int__(). For floating point numbers, this truncates towards zero.</em>"</p>
+<p>The syntax of the print function is more complicated still; however, it prints only one object (a string in this case) and does not return a value (-&gt; None). You don’t need to understand everything about the documentation initially (and maybe never), but you will need to notice examples and experiment.</p>
+<h2>Writing a Function</h2>
+<p>Recall that one reason Python provides built-in functions is to hide complexity. That is the same reason you will write functions, along with the ability to reuse chunks of code without having to remember the details. If fact, to use a function, you only need to know:</p>
+<ul>
+  <li>the function’s name</li>
+  <li>the argument(s) to the function</li>
+  <li>the function’s return value(s)</li>
+</ul>
+<p>You start by defining this <em>signature</em> (name, input arguments, and return values) that enables Python to uniquely identify the function. After that, you must fill in the program logic that accomplishes the purpose of the function. Let’s take significant logic in the previous ConvertTemperature program and turn it into a function:</p>
+<pre><code>    if in_scale == "F":
+        # Convert Fahrenheit to Celsius
+        out_temp = (5 / 9) * (in_temp - 32)
+        # Set out_scale="C"
+        out_scale = "C"
+    elif in_scale == "C":
+        # Convert Celsius to Fahrenheit
+        out_temp = (in_temp * 1.8) + 32
+        # Set out_scale="F"
+        out_scale = "F"
+    else:
+        print("Invalid scale")
+</code></pre>
+<p>Let’s name the function convertTemp(). What are the input arguments we will need? They are</p>
+<ul>
+  <li>the input scale, which is a string</li>
+  <li>the input temperature, which is a number; let’s restrict it to integers</li>
+  <li>the output scale, which is a string (For the assignment the output scale needs to be provided as an argument because you will be asked to convert between Kelvin, in addition to between Fahrenheit and Celsius.)</li>
+</ul>
+<p>The return value is the converted temperature; however, because you want to avoid print statements, which would be a <em>side effect</em> of the calculation if you left it in your function, you will also need to return a special value, None, indicating that a return value was not provided. The type for the return value is Object, since it could be None, as well as int or float.</p>
+<p>Here’s what the covertTemps() function looks like after meeting the requirements identified above:</p>
+<pre><code>    def convertTemp(from_scale: str, to_scale: str, temp: int) -&gt; object:
+        if from_scale == "F":
+            if to_scale == "C":
+                return (5 / 9) * (temp - 32) # Celsius to Fahrenheit
+            elif to_scale == "C":
+                return temp
+            else:
+                pass
+        elif from_scale == "C":
+            if to_scale == "F":
+                return (temp * 1.8) + 32 # Celsius to Fahrenheit
+            elif to_scale == "C":
+                return temp
+            else:
+                pass
+        else:
+            pass
+        return None
+</code></pre>
+<p>The definition is <code>def convertTemp(from_scale: str, to_scale: str, temp: int) -&gt; object:</code>, which is identified by the <code>def</code> statement. The name follows along with parentheses. (). The arguments are listed within the parentheses along with their associated types. Following the arguments is an arrow and type of the return value. Note the colons, which separate the variable names and types and also mark the end of the definition. </p>
+<p>The names of the arguments can be different from the names used when calling the function; for example:</p>
+<pre><code>out_temp = convertTemp(in_scale, out_scale, in_temp)
+</code></pre>
+<p>The function definition provides names that are used in the implementation of the function; it does not specify the names that are used to actually call the function. If it did, your main program would be restricted to only using names dictated by the function implementer, which for large programs written by multiple programmers, might not be you. The function signature is actually defined by the function name and the argument and return types, not the actual variable or argument names. Notice that the function definition does not even specify the variable being returned.</p>
+<p>What follows next is the code that implements the function. It contains logic that is very similar to the previous assignment. The logic difference is that the calling program must provide both the input and output scales, and allows the scales to be the same, e.g. "F" in and "F" out is okay, instead of considering it to be an error. If there is a problem with one of the scales, the function returns None, rather than the converted temperature. Other than the return statement, the only the pass statement is new; it specifies that nothing further happens in the block and the program execution flows to the next statement. </p>
+<p>One last thing, function definitions in the same file as the main program must come before the main program, as follows:</p>
+<pre><code>    def convertTemp(from_scale: str, to_scale: str, temp: int) -&gt; object:
+        ...
+        
+    if __name__ == '__main__':
+        ...        
+</code></pre>
+<p>Later, we will discuss placing functions and other objects in separate files, which is preferred, especially for reuse.</p>
+<h2>Assignment</h2>
+<ul>
+  <li>Below is a standard flowchart for the convertTemp() function. Modify the flowchart to handle the Kelvin scale (K).</li>
+  <li>Modify the the convertTemp() function to match your flow chart and execute the following main program:</li>
+</ul>
+<pre><code>    if __name__ == '__main__':
+        in_scale = ""  # Define scale before it is used
+        while in_scale != "F" and in_scale != "C" and in_scale != "K":
+            in_scale = input("Enter scale as K or F or C: ")
+            out_scale = input("Enter result scale as K or F or C: ")
+            in_temp = int(input("Enter temperature to convert: "))
+            out_temp = convertTemp(in_scale, out_scale, in_temp)
+            if out_temp != None:
+                print(str(in_temp) + in_scale + ' = ' + str(out_temp) + out_scale)
+            else:
+                print("Bad scale. Try again.")
+
+</code></pre>
+<h3>Kelvin Scale</h3>
+<p><img src="images/KelvinConversions.png" alt="images/KelvinConversions.png"/></p>
+<h3>Starting Flow Chart (Without Kelvin Scale)</h3>
+<p><img src="images/ConvertTempFlowChart.png" alt="images/ConvertTempFlowChart.png"/></p>
+<h3>Answer the following questions:</h3>
+<ol>
+  <li>What is a built-in function in Python?</li>
+  <li>What does the def statement do?</li>
+  <li>What is a function signature?</li>
+  <li>What is an argument?</li>
+  <li>What is a return value?</li>
+  <li>What do you use as a value when there is nothing to return?</li>
+  <li>What does the pass statement do?</li>
+  <li>In a single file, which comes first, function definitions or the main program?</li>
+</ol>
+</body></html>

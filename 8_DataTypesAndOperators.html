@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><html><head/><body>
+<h1>Data Types and Operations</h1>
+<p>Now that you have worked with numbers, strings, and functions, along with associated logic, there are things you will need to know to round out your work with numbers and strings. We will divide the information based on 3 categories of primitive data types: numbers, strings, and booleans, each of which you have used, although booleans have not formally been introduced. Later, you will see how these data types can be organized into more complex structures. </p>
+<p>With the exception of specifying the data types of function arguments and return values, you have noticed that Python does not require a variables to have a specific data type. You can assign the variable x to either a number or a string:</p>
+<pre><code>    x=5
+    x="my string"  
+</code></pre>
+<p>As a best practice, you won’t want to reuse variables for different purposes, so you probably will want to have several variables, one for each purpose:</p>
+<pre><code>    x=5
+    title="My String"  
+</code></pre>
+<p>Because functions typically require data types (Object can be any data type), you must ensure that you use a compatible data type or <a href="https://www.w3schools.com/python/python_casting.asp">cast</a> it to one. Often, you perform the cast as part of the same statement; for example, if you want to perform addition on an input value you could write:</p>
+<pre><code>    x=int(input("Enter a number: ")
+</code></pre>
+<p>The input() function returns a string that you can cast to an integer that you can use for addition, multiplication, and so on.</p>
+<p>Let’s explore the kinds of operations you can do on either of these data types.</p>
+<h2>Numeric Data Types</h2>
+<p>There are 3 numeric data types:</p>
+<ul>
+  <li>Integers (int), which are positive and negative whole numbers, and 0</li>
+  <li>Real numbers (float), which include all decimal numbers, e.g. 0.0, 1.0, -1.0, and such, to a fairly large precision; for example, pi = 3.141592653589793238</li>
+  <li>Complex numbers, which have a real and imaginary part</li>
+</ul>
+<p>For our purposes, we will only discuss int’s and float’s. Python automatically casts integers to floats and vice versa when performing calculations, so you do not need to use int() and float() to cast between them when you specify a formula or calculation. There are many built-in functions and a math library that you can use. Review the following w3schools pages:</p>
+<ul>
+  <li><a href="https://www.w3schools.com/python/python_numbers.asp">Python Numbers</a></li>
+  <li><a href="https://www.w3schools.com/python/python_math.asp">Python Math</a></li>
+</ul>
+<p>Python uses the same rules as mathematics. To make things work, you may need to use parentheses for more than just clarity. Python evaluates the expression on the right-hand side (RHS) of the equal sign and assigns the result to the variable on the left-hand side (LHS). An expression is evaluated left to right in order of <em>precedence</em>. which causes some operators, such as multiply ( * ) and divide ( / ) to be evaluated before lesser-precedence operators, such as addition ( + ) and subtraction ( - ), which is why you need to use parentheses to specify he order. </p>
+<p>For example, the expression you use for converting Fahrenheit to Celsius is (5 / 9) * (in_temp - 32); thus, the expression evaluates to 5/9 inside the left-most set of parentheses multiplied by in_temp-32, which is the next grouping to the left (and in this case, the right-most grouping):</p>
+<ol>
+  <li>5/9</li>
+  <li>in_temp-32</li>
+  <li>result of line 1 multiplied by result of line 2</li>
+</ol>
+<p>For the boiling point of water, 212F, the result is .55555… times 180, which is 100C and correct.</p>
+<p>Without the parentheses, the evaluation would be: </p>
+<ol>
+  <li>5/9</li>
+  <li>result of line 1 multiplied by in_temp</li>
+  <li>result of line 2 added to 32</li>
+</ol>
+<p>and the resulting temperature would be .5555 times 212 plus 32, or 149.777 repeating, and incorrect.</p>
+<h2>Strings</h2>
+<p>A string is a group of 0 or more characters. You’ve already printed strings, concatenated strings using the + operator, and compared string constants to the contents of variables. You create a string by assignment, such as <code>s = "abc0123"</code> or <code>my_str = '789xyz</code>. Note that strings can be defined using either single or double quotes; it makes no difference but you should try to be consistent. </p>
+<p>The following diagram shows the string 'Hello W': <img src="images/slice.png" alt="images/slice.png"/></p>
+<p>Strings start at index position 0 and have a length that can be determined by using the len() function, e.g. <code>str_len = len(temp_str)</code>. Individual characters can be accessed by the index, e.g. if variable s is set to 'Hello W', <code>print(s[1])1</code> prints the second character of a string, which is an e.</p>
+<h3>Slicing</h3>
+<p>It is useful to examine or manipulate a <em>slice</em> of a string, which is a <em>substring</em> of a string using the slice syntax. A slice can be referenced either from the beginning of a string using positive index values, or from the end of a string, using negative values to identify a boundary from the end of a string, as in the following example:</p>
+<pre><code>        s = "Hello W"
+        print(s[:]) # print entire string
+        print(len(s)) # print the length of the string
+        print(s[:2]) # print the first 2 characters
+        print(s[:-2]) # print all but the last 2 characters
+        print(s[2:-2]) # print sting from the 3rd character up to the 2 characters
+        s += "orld" # append characters to a copy of s
+        for char in s:
+            print(char) # print each character in the string
+        for i in range(1,len(s),2):
+            # print every other character from the 2nd character to the end of the string    
+            print(s[i])  
+</code></pre>
+<p>The string "Hello W" is assigned to the variable s. A slice is defined by an open bracket [ to indicate the start of the slice, a colon (:) to separate the start from the end of the slice and a close bracket ] to indicate the end of the slice. If an index is not specified for the start or end, position 0 or position len(s)-1 is implied; thus, s[:] is a slice that includes all characters. As mentioned earlier and shown in the example, you can specify the start or end a slice from either the start or end of the string. </p>
+<h3>Strings are Immutable</h3>
+<p>In the example, <code>s += "orld"</code> is equivalent to <code>s = s + "orld"</code>. Both statements concatenate strings using the + operator; += is just a short-hand form of concatenation. At this point note that although the variable name is reused, the actual assignment to a string is <em>immutable</em>, meaning that once a string has been created, in cannot be changed. Thus, even though it appears the statement modifies the string, the s variable name represents 2 different variables; you can test this using a built-in function: <a href="https://www.w3schools.com/python/ref_func_id.asp">id()</a>. </p>
+<p>Immutability of objects is introduced later; it is a useful property because once you know a value cannot be changed, program logic is simplified. For now, just remember that reassignment to </p>
+<h3>For Loops Over Strings</h3>
+<p>Although For loops have not yet been formally introduced, you can use them to <em>iterate</em> or traverse a string. The For statement <code>for char in s:</code> enables you to process each character in a string; char is the variable name used in this loop, but you can use any meaningful variable name.</p>
+<p>The range() function specifies the string indexes to print in the example. The range specifies the start index position, the end position, and the increment, e.g. 2 specifies every other index position.</p>
+<p>For more information about For loops, see <a href="https://www.w3schools.com/python/python_for_loops.asp">Python For Loops</a>, especially Looping Through a String and The range() Function.</p>
+<h3>Built-in Functions and Methods for Strings</h3>
+<p>Just as with numbers, there are many built-in functions that you can use to manipulate stings. You should review the following w3schools pages:</p>
+<ul>
+  <li><a href="https://www.w3schools.com/python/python_strings.asp">Python Strings</a> and its child pages on slicing strings, modifying, concatenating, and formatting them, and using escape characters to include special characters, such as quotation marks</li>
+  <li><a href="https://www.w3schools.com/python/python_strings_methods.asp">Python - String Methods</a> for the complete list of methods you can perform on strings</li>
+</ul>
+<h2>Booleans</h2>
+<p>Boolean values (bool), True and False, are useful for testing truth and communicating the result. Consider the following function that determines whether a temperature scale is Fahrenheit, Celsius, or Kelvin:</p>
+<pre><code>    def valid_scale(scale: str) -&gt; bool:
+        if scale == "F" or scale == "C" or scale == "K":
+            return True
+        else:
+            return False
+</code></pre>
+<p>If the scale is in one of those types, the function returns True, meaning that the scale is valid; otherwise, it returns false. The function could be called in the following ways:</p>
+<pre><code>    while not valid_scale(out_scale):
+    ...
+    if valid_scale(in_scale) and valid_scale(out_scale):
+</code></pre>
+<p>The while loop executes as long as the out_scale is not valid: <code>not valid_scale(...)</code>, means <strong>not</strong> <code>valid_scale()</code> is True–the scale is <strong>not</strong> valid. The if block executes if both the in_scale <strong>and</strong> out_scale are valid.</p>
+<h2>Order of Python Operator Precedence</h2>
+<p>Order of precedence applies to more than just numeric operators. You have seen them when dealing with strings and logic, such as the if statement. For additional information about operators, see <a href="https://www.w3schools.com/python/python_operators.asp">Python Operators</a>. The main ones you will be concerned with most typically, in order of precedence, are:</p>
+<ol>
+  <li>Parentheses</li>
+  <li>Function calls</li>
+  <li>Slicing</li>
+  <li>Exponentiation</li>
+  <li>Positive and negative numbers</li>
+  <li>Multiplication, division, and remainder</li>
+  <li>Addition and subtraction</li>
+  <li>Comparisons, membership, and identity</li>
+  <li>Boolean NOT</li>
+  <li>Boolean AND</li>
+  <li>Boolean OR</li>
+</ol>
+<p>The following table identifies these operators and shows the order of precedence from highest to lowest for all operators in Python, including ones you have yet to see or look up for yourself: <img src="images/precedence.png" alt="images/precedence.png"/></p>
+<h2>Assignment</h2>
+<p>Modify your convertTemp project from the previous assignment:</p>
+<ol>
+  <li>Create a valid_scale() function which returns True if the scale is either 'F', 'C', or 'K'.</li>
+  <li>Modify your main program to make use of valid_scale().</li>
+  <li>Create a function with the following definition <code>def parse_temp_input(temp_str: str):</code> that accepts a string, such as 212F or 0C, and return its component values, e,g, an int that contains the temperature, e.g. 212 or 0, and the scale, such as 'F', 'C', or 'K'. use slicing on the input string to find the values.</li>
+  <li>Extra credit: Format out_temp in the print statement, <code>print(str(in_temp) + in_scale + ' = ' + str(out_temp) + out_scale)</code> using a built-in function so that the temperature always displays and an integer, e.g. 100F = 38C</li>
+</ol>
+<p>Answer the following questions:</p>
+<ol>
+  <li>Is <code>(temp * 1.8) + 32</code> equivalent to <code>temp * 1.8 + 32</code>? Why or why not?</li>
+  <li>How do you remove white space from the beginning of a string?</li>
+  <li>How do you remove white space from the end of a string?</li>
+  <li>For string s, is <code>s[0] = "x"</code> a valid statement? Why or why not?</li>
+  <li>How do you determine whether a copy of a string with name s is the same as another variable with the same name?</li>
+  <li>What is the purpose of the <code>range</code> option in a For statement?</li>
+  <li>When the order of precedence causes unexpected results, how to you resolve it to create correct results?</li>
+  <li>How do you determine the length of a string?</li>
+  <li>What are the valid index values for a 10-character string?</li>
+</ol>
+</body></html>

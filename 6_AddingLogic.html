@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><html><head/><body>
+<h1>Adding Logic</h1>
+<p>So far, your programs execute all instructions (statements) in order, but your requirements may require it to execute some instructions for one case and other instructions for another case. For example, your program can handle both conversion from Fahrenheit to Celsius and Celsius to Fahrenheit depending on what temperature the user needs to know. US users may want to know the temperature in Fahrenheit when looking at an international weather forecast (they want to convert Celsius to Fahrenheit); international users may want to know the temperature of a place in the United States in Celsius, because they are familiar to what Celsius temperatures feel like. </p>
+<p>It seems that you can keep some of your previous program, which contains the formula for converting Fahrenheit to Celsius but you need to know additional information, such as the formula for converting Celsius to Fahrenheit. (The formula for Celsius to Fahrenheit is F = (C * 1.8) + 32.)</p>
+<p>One way to determine the variables you need is to list the outputs and any conditions:</p>
+<ul>
+  <li>Temperature in Fahrenheit if the input temperature is in Celsius</li>
+  <li>Temperature in Celsius if the input temperature is in Fahrenheit</li>
+</ul>
+<p>You can use the variables you have defined for temperature so far (in_temp and out_temp), but the needed information is whether the input scale is Fahrenheit or Celsius. For sure you need a variable for the input scale, let’s call it in_scale, and although there are other ways to write the program, let’s create another variable, out_scale, to display the output the output scale.</p>
+<p>At this point, you can develop a <em>flowchart</em>, which is a visual diagram of your program’s logic. Flowcharts are often useful when you are thinking through program logic. Here is a flowchart of the temperature conversion problem:</p>
+<p><img src="images/IPOTempFlowChart.png" alt="images/IPOTempFlowChart.png"/></p>
+<p>In the interest of space, this flowchart is a modified version of a traditional flowchart; it is modified to fit on the page. Because flowcharts can become unwieldy and take longer to create than the program itself and as programs get longer, <em>pseudo code</em>, which is an English-like notation resembling a simplified programming language, is often used to specify the program’s instructions. </p>
+<p>From a flowchart or pseudo code, you can start to code, but the lines in the flowchart or pseudo code will not match exactly the Python syntax you will need, but you can identify the syntax you will need:</p>
+<ul>
+  <li>You must compare the input string to the characters "F" and "C"</li>
+  <li>You must handle the cases where either in_scale is equal to "F" or equal to "C"</li>
+  <li>You must re-request the input if neither are true</li>
+</ul>
+<p>The logic requires a <em>condition</em>, in this case ==, which tests whether the value of one variable is equal to something else, in this case the constant "F", or equal to the constant "C". You also need an <em>if statement</em> to test the condition and direct program execution to the correct lines of code to execute. And you can use the not equal condition, !=, to test for inequality and loop again when the input scale is neither Fahrenheit nor Celsius.</p>
+<h2>Prerequisites</h2>
+<p>Before you start the assignment, study the following w3schools tutorials, which you will need to fully understand the assignment:</p>
+<ul>
+  <li><a href="https://www.w3schools.com/python/python_conditions.asp">Python Conditions and If statements</a></li>
+  <li><a href="https://www.w3schools.com/python/python_while_loops.asp">Python While Loops</a></li>
+</ul>
+<h2>Assignment</h2>
+<p>Notice the comments in the program, which start with a hash-tag or pound sign ( # ). You will need to add a line of code after each comment except the first one before you can execute it.</p>
+<pre><code>    if __name__ == '__main__':
+        in_scale = ""  # Define scale before it is used
+        while in_scale != "F" and in_scale != "C":
+            in_scale = input("Enter scale as F or C: ")
+            in_temp = int(input("Enter temperature to convert: "))
+            if in_scale == "F":
+                # Convert Fahrenheit to Celsius
+                # Set out_scale="C"
+            elif in_scale == "C":
+                # Convert Celsius to Fahrenheit
+                # Set out_scale="F"
+            else:
+                print("Invalid scale")
+        print(str(in_temp) + in_scale + ' = ' + str(out_temp) + out_scale)
+</code></pre>
+<p>Fill in the missing statements and test your program before you submit a screen shot and answer the following questions:</p>
+<ol>
+  <li>Remove <code>in_scale = ""</code> from your program and attempt to run it. What happens and why?</li>
+  <li>Identify the blocks in this program. Why is indentation important?</li>
+</ol>
+</body></html>

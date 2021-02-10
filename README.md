@@ -1,2 +1,2 @@
-# mccue.github.io
-Practical Introduction to CS
+# Introduction To Practical Computer Science
+ 
