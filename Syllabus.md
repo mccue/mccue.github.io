@@ -9,7 +9,7 @@
 1. [Functions](7_Functions.html)
 1. [Operations on Primitive Data Types](8_DataTypesAndOperators.html)
 1. [Operations on Sequences: Lists, Tuples, and Ranges](9_SequenceDataTypes.html)
-1. [Data Dictionaries](10_DataDictionaries.md)
+1. [Dictionaries](10_Dictionaries.html)
 1. [A few more data types: Sets and Arrays](11_SetsAndArrays.md)
 1. [Sorting and Searching](12_SortingAndSearching.md)
 1. [Files and CRUD](13_FilesAndCRUD.md)
@@ -19,7 +19,9 @@
 1. [Compilation and Deployment](17_CompilationAndDeployment.md)
 1. [Patterns](18_Patterns.md)
 1. [Web apps](19_WebApps.md)
-. 
+1. [Lambda Functions](20_Lambda.md)
+1. [Recursion](21_Recursion.md)
+1. [Algorithms](22_Algorithms.md)
 1. 
 1. 
 1. 
