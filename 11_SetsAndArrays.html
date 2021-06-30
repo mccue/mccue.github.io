@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><html><head/><body>
+<h1>Sets and Arrays</h1>
+<p>In this module, you will round out your knowledge of data types by looking at sets and arrays. </p>
+<h2>Working With Sets</h2>
+<p>If you want to perform common operations from Set Theory, such as union, intersection, and difference, you may want to use a <em>set</em> data type. In Python, sets are an unordered collection with no duplicate elements. Consider 2 sets:</p>
+<pre><code>setA = {1, 2, 4, 'A', 'B', 'D', -10, 'C'}
+setB = {'B', 1, 'D', 2, 4, -10, 'A', 'C'}
+</code></pre>
+<p>Sets are identified by braces, <code>{}</code> but you must create an empty set with a constuctor: <code>setNew = set()</code> because the syntax <code>setNew = {}</code> would create a dictionary instead.</p>
+<p>Sets can be compared with relational operators, such as equal (<code>!=</code>) and not equal (<code>!=</code>). Even though the values in <code>setA</code> are in different positions than the in the <code>setB</code>, the sets are equal they are unordered. </p>
+<p>This also means that you cannot access an element of a set by position; however, you can access a set by the value of an element; for example, <code>setA.remove(1)</code> to remove the value <code>1</code> in <code>setA</code>. You can also add a value; for example, <code>setA.add(1)</code> to put the value back. However, attempting the same operation on <code>setB</code> will have no effect since duplicates are not allowed and <code>setB</code> already has the value <code>1</code> in it. </p>
+<p>You can traverse the elements of a set in the same manner as other collections:</p>
+<pre><code>for x in b:
+   print(x)
+</code></pre>
+<p>Being able to add and remove elements also means that a set is mutable and can be changed; however, the elements in a set must be immutable, meaning the elements themselves cannot be changed.</p>
+<h3>Operations on Sets</h3>
+<p>The following diagram shows some common set operations: <img src="images/SetMethods.png" alt="images/SetMethods.png"/></p>
+<p>For these examples, given that set <code>a</code> contains {1, 2, 4, -10} and set <code>b</code> contains {'A', 'B', 'D', -10, 'C'}, consider the following lines of code:</p>
+<h4>Union</h4>
+<pre><code>a.union(b)
+b.union(a)
+</code></pre>
+<p><code>a</code> union <code>b</code> gives <code>{1, 2, 4, 'A', 'B', 'D', -10, 'C'}</code>.</p>
+<p><code>b</code> union <code>a</code> gives <code>{'B', 1, 'D', 2, 4, -10, 'A', 'C'}</code>.</p>
+<p>The resulting sets are equal.</p>
+<h4>Intersection</h4>
+<pre><code>a.intersection(b)
+b.intersection(a)
+</code></pre>
+<p><code>a</code> intersection <code>b</code> gives <code>{-10}</code>, as does <code>b</code> intersection <code>a</code>. The resulting sets are equal.</p>
+<h4>Difference and Complement</h4>
+<pre><code>a.union(b).difference(a)
+a.difference(b)
+a - b
+</code></pre>
+<p>The 3 operations above give <code>{'B', 'D', 'C', 'A'}</code>. The resulting sets are equal.</p>
+<pre><code>b.union(a).difference(b)
+b.difference(a)
+b - a
+</code></pre>
+<p>The 3 operations above give <code>{1, 2, 4}</code>. The resulting sets are equal.</p>
+<h4>Symmetric Difference</h4>
+<pre><code>a.symmetric_difference(b)
+b.symmetric_difference(a)
+</code></pre>
+<p><code>a.symmetric_difference(b)</code> gives <code>{1, 2, 4, 'C', 'B', 'D', 'A'}</code>.</p>
+<p><code>b.symmetric_difference(a)</code> gives <code>{1, 2, 4, 'D', 'A', 'C', 'B'}</code>.</p>
+<p>The resulting sets are equal.</p>
+<h4>Other Operations</h4>
+<p>There are several other operations you can perform on sets, such as determining whether a set is a subset or superset of another set or updating a set in place after performing one of the above operations, etc. For more information and examples, see <a href="https://www.w3schools.com/python/python_ref_set.asp">Python Set Methods</a>.</p>
+<h3>Removing Duplicate Vales From Lists</h3>
+<p>The "silent" removal of duplicate values can be useful if that is what you want to do. Consider the following example that removes duplicate elements from a list:</p>
+<pre><code>list1 = ["A","B","A","B","D","C","B"]
+b = set(l1)
+list2 = list(b)
+</code></pre>
+<p>The <em>cast</em> performed by <code>set</code> changes the list into a set and the cast performed by <code>list</code> changes the set back into a list without the duplicate values: 'C', 'D', 'B', and 'A'.</p>
+<h2>Working With Arrays</h2>
+<p>An array is a collection of elements, whose values are indexed. Unlike other programming languages, arrays are not built into core Python. For cases in which the number of data elements to manipulate is fairly small, you would simply use a list. </p>
+<p>For a larger number of elements in a 1-dimension array, called a <em>vector</em> in mathematics, you can use the array module. A <em>module</em> is an add-on to the Python language; you will see later that you can also create your own modules to help organize and share your code.</p>
+<p>The array module is briefly introduced here; however, if you are working with multidimensional arrays required by scientific applications or data science, you most likely will use the NumPy add-on module, which is introduced later, or perhaps use SciPy, which builds on NumPy, or use other more specialized modules.</p>
+<p>The array module improves computational performance by restricting the data elements to a single type that you must specify when creating an array; otherwise, you can perform operations on an array in the same way you would a list.</p>
+<p>The array module supports the following C-language basic data types: <img src="images/IntegerWordFormats.png" alt="images/IntegerWordFormats.png"/></p>
+<p>At the top of your file, you must import the <code>array</code> module:</p>
+<pre><code>import array
+</code></pre>
+<p>Then, in a function your or your main program, you can create an array by specifying the type code and the initializer:</p>
+<pre><code>arr = array.array('i', [10, 20, 30, 40])
+</code></pre>
+<p>Note the <code>array.array</code> syntax. The first <code>array</code> is the module name, and the second one, <code>array(...)</code> is the constructor. The type code and list are arguments to the array. When working with modules, you must always prefix its contents, like a function or constructor, with the module name.</p>
+<p>See the <a href="https://docs.python.org/3/library/array.html">Python 3 array module</a> for more information about this module, or skip ahead to NumPy.</p>
+</body></html>

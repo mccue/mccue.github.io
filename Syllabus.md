@@ -10,20 +10,23 @@
 1. [Operations on Primitive Data Types](8_DataTypesAndOperators.html)
 1. [Operations on Sequences: Lists, Tuples, and Ranges](9_SequenceDataTypes.html)
 1. [Dictionaries](10_Dictionaries.html)
-1. [A few more data types: Sets and Arrays](11_SetsAndArrays.md)
+1. [A few more data types: Sets and Arrays](11_SetsAndArrays.html)
 1. [Sorting and Searching](12_SortingAndSearching.md)
 1. [Files and CRUD](13_FilesAndCRUD.md)
 1. [Error Handling](14_ErrorHandling.md)
 1. [Classes and Methods](15_ClassesAndMethods.md)
 1. [APIs](16_APIs.html)
+1. [Debugging](Debugging.html)
 1. [Compilation and Deployment](17_CompilationAndDeployment.md)
-1. [Patterns](18_Patterns.md)
-1. [Web apps](19_WebApps.md)
-1. [Lambda Functions](20_Lambda.md)
-1. [Recursion](21_Recursion.md)
-1. [Algorithms](22_Algorithms.md)
-1. 
-1. 
+1. [Source Code Control](18_GitHub.md)
+1. [Patterns](19_Patterns.md)
+1. [Web apps](20_WebApps.md)
+1. [Lambda Functions](21_Lambda.md)
+1. [Recursion](22_Recursion.md)
+1. [NumPy Library](23_NumPy.md)
+1. [PyQt Designer](24_PyQt.md)
+1. [Modules and Program Organization](25_Modules.md)
+1. [Comparisons of Programming Languages](26_ProgrammingLanguageComparisons.md)
 1. 
 1. 
 1. 
